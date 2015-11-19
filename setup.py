@@ -10,6 +10,7 @@ setup(name='app',
       install_requires=[
           'flask',
           'braintree',
+          'mock'
       ],
       zip_safe=False,
 )

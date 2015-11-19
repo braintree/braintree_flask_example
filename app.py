@@ -1,4 +1,5 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, render_template
+
 import braintree
 
 app = Flask(__name__)
@@ -17,7 +18,8 @@ def index():
 
 @app.route('/checkouts/new')
 def new_checkout():
-    return 'Hello World!'
+    client_token = braintree.ClientToken.generate()
+    return render_template('checkouts.html', client_token=client_token)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3000, debug=True)
