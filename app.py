@@ -1,5 +1,9 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return redirect(url_for('new_checkout'))
 
 @app.route('/checkouts/new')
 def new_checkout():

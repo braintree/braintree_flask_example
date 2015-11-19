@@ -15,5 +15,10 @@ class AppTestCase(unittest.TestCase):
         res = self.app.get('/checkouts/new')
         self.assertEquals(res.status_code, 200)
 
+    def test_root_redirect_to_checkout(self):
+        res = self.app.get('/')
+        self.assertEquals(res.status_code, 302)
+        self.assertTrue('/checkouts/new' in res.location)
+
 if __name__ == '__main__':
     unittest.main()
