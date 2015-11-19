@@ -26,5 +26,13 @@ class AppTestCase(unittest.TestCase):
         res = self.app.get('/checkouts/new')
         self.assertTrue('var client_token = \'test_client_token\';' in res.data)
 
+    def test_checkout_contains_checkout_form(self):
+        res = self.app.get('/checkouts/new')
+        self.assertTrue('<form id="checkout"' in res.data)
+
+    def test_checkout_contains_payment_form_div(self):
+        res = self.app.get("/checkouts/new")
+        self.assertTrue('<div id="payment-form"' in res.data)
+
 if __name__ == '__main__':
     unittest.main()

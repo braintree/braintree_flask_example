@@ -1,4 +1,13 @@
 <h1>Checkout</h1>
+<form id="checkout" method="post" action="/checkouts">
+  <div id="payment-form"></div>
+  <input type="submit" value="Pay Now">
+</form>
+
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 <script>
   var client_token = '{{ client_token }}';
+  braintree.setup(client_token, "dropin", {
+    container: "payment-form"
+  });
 </script>
