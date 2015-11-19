@@ -1,5 +1,15 @@
 from flask import Flask, redirect, url_for
+import braintree
+
 app = Flask(__name__)
+app.config.from_pyfile("application.cfg")
+
+gateway = braintree.Configuration.configure(
+    braintree.Environment.Sandbox,
+    app.config['BT_MERCHANT_ID'],
+    app.config['BT_PUBLIC_KEY'],
+    app.config['BT_PRIVATE_KEY']
+)
 
 @app.route('/')
 def index():
