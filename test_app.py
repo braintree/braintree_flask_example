@@ -20,19 +20,19 @@ class AppTestCase(unittest.TestCase):
     def test_root_redirect_to_checkout(self):
         res = self.app.get('/')
         self.assertEquals(res.status_code, 302)
-        self.assertTrue('/checkouts/new' in res.location)
+        self.assertIn('/checkouts/new', res.location)
 
     def test_checkout_contains_client_token(self):
         res = self.app.get('/checkouts/new')
-        self.assertTrue('var client_token = \'test_client_token\';' in res.data)
+        self.assertIn('var client_token = \'test_client_token\';', res.data)
 
     def test_checkout_contains_checkout_form(self):
         res = self.app.get('/checkouts/new')
-        self.assertTrue('<form id="checkout"' in res.data)
+        self.assertIn('<form id="checkout"', res.data)
 
     def test_checkout_contains_payment_form_div(self):
         res = self.app.get("/checkouts/new")
-        self.assertTrue('<div id="payment-form"' in res.data)
+        self.assertIn('<div id="payment-form"', res.data)
 
 if __name__ == '__main__':
     unittest.main()
