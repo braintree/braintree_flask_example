@@ -1,9 +1,10 @@
-from flask import Flask, redirect, url_for, render_template, request
+from flask import Flask, redirect, url_for, render_template, request, flash
 
 import braintree
 
 app = Flask(__name__)
 app.config.from_pyfile("application.cfg")
+app.secret_key = app.config['APP_SECRET_KEY']
 
 gateway = braintree.Configuration.configure(
     braintree.Environment.Sandbox,
@@ -32,7 +33,11 @@ def create_checkout():
         "amount": request.form["amount"],
         "payment_method_nonce": request.form["payment_method_nonce"],
     })
-    return redirect(url_for('show_checkout',transaction_id=result.transaction.id))
+    if result.is_success:
+        return redirect(url_for('show_checkout',transaction_id=result.transaction.id))
+    else:
+        for x in result.errors.deep_errors: flash(x.message)
+        return redirect(url_for('new_checkout'))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3000, debug=True)

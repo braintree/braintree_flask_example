@@ -1,3 +1,10 @@
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <p>{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 <h1>Checkout</h1>
 <form id="checkout" method="post" action="/checkouts">
   <label for="amount">Amount</label>

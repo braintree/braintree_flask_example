@@ -33,3 +33,13 @@ class MockObjects:
 MockObjects.TRANSACTION_SALE_SUCCESSFUL = mock.Mock(
     transaction = MockObjects.TRANSACTION
 )
+
+MockObjects.TRANSACTION_SALE_UNSUCCESSFUL = mock.Mock(
+    is_success = False,
+    errors = mock.Mock(
+        deep_errors = [
+            mock.Mock(message="Transaction was unsuccessful"),
+            mock.Mock(message="Transaction was really unsuccessful"),
+        ]
+    )
+)
