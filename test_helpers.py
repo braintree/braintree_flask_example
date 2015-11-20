@@ -41,5 +41,11 @@ MockObjects.TRANSACTION_SALE_UNSUCCESSFUL = mock.Mock(
             mock.Mock(message="Transaction was unsuccessful"),
             mock.Mock(message="Transaction was really unsuccessful"),
         ]
-    )
+    ),
+    transaction = None
+)
+
+MockObjects.TRANSACTION_SALE_UNSUCCESSFUL_PROCESSOR = mock.Mock(
+    is_success = False,
+    transaction = MockObjects.TRANSACTION
 )

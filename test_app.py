@@ -81,5 +81,21 @@ class AppTestCase(unittest.TestCase):
         self.assertIn('Transaction was unsuccessful', res.data)
         self.assertIn('Transaction was really unsuccessful', res.data)
 
+    @mock.patch('braintree.Transaction.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_UNSUCCESSFUL_PROCESSOR))
+    def test_checkouts_create_redirects_to_checkouts_new_when_processor_errors_present(self):
+        res = self.app.post('/checkouts', data={
+            "payment_method_nonce": "some_invalid_nonce",
+            "amount": "12.34",
+        })
+        self.assertIn('/checkouts/my_id', res.location)
+
+    @mock.patch('braintree.Transaction.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_UNSUCCESSFUL_PROCESSOR))
+    def test_checkouts_create_displays_errors_when_processor_errors_present(self):
+        res = self.app.post('/checkouts', follow_redirects=True, data={
+            "payment_method_nonce": "some_invalid_nonce",
+            "amount": "12.34",
+        })
+        self.assertIn('Transaction status - authorized', res.data)
+
 if __name__ == '__main__':
     unittest.main()

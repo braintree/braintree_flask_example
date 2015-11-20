@@ -35,6 +35,9 @@ def create_checkout():
     })
     if result.is_success:
         return redirect(url_for('show_checkout',transaction_id=result.transaction.id))
+    elif result.transaction:
+        flash('Transaction status - %s' % result.transaction.status)
+        return redirect(url_for('show_checkout', transaction_id=result.transaction.id))
     else:
         for x in result.errors.deep_errors: flash(x.message)
         return redirect(url_for('new_checkout'))
