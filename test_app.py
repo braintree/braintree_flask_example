@@ -9,6 +9,7 @@ import tempfile
 
 @mock.patch('braintree.ClientToken.generate', staticmethod(lambda: "test_client_token"))
 @mock.patch('braintree.Transaction.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION))
+@mock.patch('braintree.Transaction.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_SUCCESSFUL))
 class AppTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -53,6 +54,14 @@ class AppTestCase(unittest.TestCase):
         self.assertIn('ijkl', res.data)
         self.assertIn('Billson', res.data)
         self.assertIn('Billy Bobby Pins', res.data)
+
+    def test_checkouts_create_redirects_to_checkouts_show(self):
+        res = self.app.post('/checkouts', data={
+            "payment_method_nonce": "some_nonce",
+            "amount": "12.34",
+        })
+        self.assertEquals(res.status_code, 302)
+        self.assertIn('/checkouts/my_id', res.location)
 
 if __name__ == '__main__':
     unittest.main()

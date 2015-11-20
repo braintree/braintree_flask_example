@@ -29,3 +29,7 @@ class MockObjects:
             fax = None,
         )
     )
+
+MockObjects.TRANSACTION_SALE_SUCCESSFUL = mock.Mock(
+    transaction = MockObjects.TRANSACTION
+)
