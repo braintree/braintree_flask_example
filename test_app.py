@@ -36,6 +36,11 @@ class AppTestCase(unittest.TestCase):
         res = self.app.get("/checkouts/new")
         self.assertIn('<div id="payment-form"', res.data)
 
+    def test_checkout_includes_amount_input(self):
+        res = self.app.get("/checkouts/new")
+        self.assertIn('<label for="amount"', res.data)
+        self.assertIn('<input type="text" name="amount" id="amount"', res.data)
+
     def test_checkouts_show_route_available(self):
         res = self.app.get("/checkouts/1")
         self.assertEquals(res.status_code, 200)
