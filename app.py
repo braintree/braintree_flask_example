@@ -3,7 +3,7 @@ from flask import Flask, redirect, url_for, render_template, request, flash
 import braintree
 
 app = Flask(__name__)
-app.config.from_pyfile("application.cfg")
+app.config.from_pyfile('application.cfg')
 app.secret_key = app.config['APP_SECRET_KEY']
 
 gateway = braintree.Configuration.configure(
@@ -30,8 +30,8 @@ def show_checkout(transaction_id):
 @app.route('/checkouts', methods=['POST'])
 def create_checkout():
     result = braintree.Transaction.sale({
-        "amount": request.form["amount"],
-        "payment_method_nonce": request.form["payment_method_nonce"],
+        'amount': request.form['amount'],
+        'payment_method_nonce': request.form['payment_method_nonce'],
     })
     if result.is_success:
         return redirect(url_for('show_checkout',transaction_id=result.transaction.id))
