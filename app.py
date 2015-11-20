@@ -21,5 +21,10 @@ def new_checkout():
     client_token = braintree.ClientToken.generate()
     return render_template('checkouts.html', client_token=client_token)
 
+@app.route('/checkouts/<int:transaction_id>')
+def show_checkout(transaction_id):
+    transaction = braintree.Transaction.find(transaction_id)
+    return render_template('checkouts/show.html', transaction=transaction)
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3000, debug=True)

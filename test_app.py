@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 import unittest
-from mock import mock
+import mock
+import test_helpers
 
 import os
 import app
 import tempfile
 
 @mock.patch('braintree.ClientToken.generate', staticmethod(lambda: "test_client_token"))
+@mock.patch('braintree.Transaction.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION))
 class AppTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -33,6 +35,19 @@ class AppTestCase(unittest.TestCase):
     def test_checkout_contains_payment_form_div(self):
         res = self.app.get("/checkouts/new")
         self.assertIn('<div id="payment-form"', res.data)
+
+    def test_checkouts_show_route_available(self):
+        res = self.app.get("/checkouts/1")
+        self.assertEquals(res.status_code, 200)
+
+    def test_checkouts_show_displays_info(self):
+        res = self.app.get("/checkouts/1")
+        self.assertIn('my_id', res.data)
+        self.assertIn('10.00', res.data)
+        self.assertIn('MasterCard', res.data)
+        self.assertIn('ijkl', res.data)
+        self.assertIn('Billson', res.data)
+        self.assertIn('Billy Bobby Pins', res.data)
 
 if __name__ == '__main__':
     unittest.main()
