@@ -13,16 +13,16 @@ gateway = braintree.Configuration.configure(
     app.config['BT_PRIVATE_KEY']
 )
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     return redirect(url_for('new_checkout'))
 
-@app.route('/checkouts/new')
+@app.route('/checkouts/new', methods=['GET'])
 def new_checkout():
     client_token = braintree.ClientToken.generate()
     return render_template('checkouts/new.html', client_token=client_token)
 
-@app.route('/checkouts/<transaction_id>')
+@app.route('/checkouts/<transaction_id>', methods=['GET'])
 def show_checkout(transaction_id):
     transaction = braintree.Transaction.find(transaction_id)
     return render_template('checkouts/show.html', transaction=transaction)
