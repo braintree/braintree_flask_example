@@ -1,10 +1,5 @@
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for message in messages %}
-      <p>{{ message }}</p>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
+{% extends 'layout.html' %}
+{% block content %}
 <h1>Transaction {{ transaction.id }}</h1>
 <h2>Details</h2>
 <p>
@@ -123,4 +118,4 @@
 <p>
   {{ url_for('new_checkout') }}
 </p>
-
+{% endblock %}

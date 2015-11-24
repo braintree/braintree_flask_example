@@ -1,10 +1,5 @@
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for message in messages %}
-      <p>{{ message }}</p>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
+{% extends 'layout.html' %}
+{% block content %}
 <h1>Checkout</h1>
 <form id="checkout" method="post" action="/checkouts">
   <label for="amount">Amount</label>
@@ -20,3 +15,4 @@
     container: "payment-form"
   });
 </script>
+{% endblock %}
