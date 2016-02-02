@@ -7,7 +7,7 @@ app.config.from_pyfile('application.cfg')
 app.secret_key = app.config['APP_SECRET_KEY']
 
 braintree.Configuration.configure(
-    braintree.Environment.Sandbox,
+    app.config['BT_ENVIRONMENT'],
     app.config['BT_MERCHANT_ID'],
     app.config['BT_PUBLIC_KEY'],
     app.config['BT_PRIVATE_KEY']
