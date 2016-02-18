@@ -39,7 +39,7 @@ def create_checkout():
         flash('Transaction status - %s' % result.transaction.status)
         return redirect(url_for('show_checkout', transaction_id=result.transaction.id))
     else:
-        for x in result.errors.deep_errors: flash(x.message)
+        for x in result.errors.deep_errors: flash('Error: %s: %s' % (x.code, x.message))
         return redirect(url_for('new_checkout'))
 
 if __name__ == '__main__':
