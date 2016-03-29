@@ -13,6 +13,16 @@ braintree.Configuration.configure(
     app.config['BT_PRIVATE_KEY']
 )
 
+TRANSACTION_SUCCESS_STATUSES = [
+    braintree.Transaction.Status.Authorized,
+    braintree.Transaction.Status.Authorizing,
+    braintree.Transaction.Status.Settled,
+    braintree.Transaction.Status.SettlementConfirmed,
+    braintree.Transaction.Status.SettlementPending,
+    braintree.Transaction.Status.Settling,
+    braintree.Transaction.Status.SubmittedForSettlement
+]
+
 @app.route('/', methods=['GET'])
 def index():
     return redirect(url_for('new_checkout'))
@@ -25,7 +35,21 @@ def new_checkout():
 @app.route('/checkouts/<transaction_id>', methods=['GET'])
 def show_checkout(transaction_id):
     transaction = braintree.Transaction.find(transaction_id)
-    return render_template('checkouts/show.html', transaction=transaction)
+    result = {}
+    if transaction.status in TRANSACTION_SUCCESS_STATUSES:
+        result = {
+            'header': 'Sweet Success!',
+            'icon': 'success',
+            'message': 'Your test transaction has been successfully processed. See the Braintree API response and try again.'
+        }
+    else:
+        result = {
+            'header': 'Transaction Failed',
+            'icon': 'fail',
+            'message': 'Your test transaction has a status of ' + transaction.status + '. See the Braintree API response and try again.'
+        }
+
+    return render_template('checkouts/show.html', transaction=transaction, result=result)
 
 @app.route('/checkouts', methods=['POST'])
 def create_checkout():
@@ -33,11 +57,9 @@ def create_checkout():
         'amount': request.form['amount'],
         'payment_method_nonce': request.form['payment_method_nonce'],
     })
-    if result.is_success:
+
+    if result.is_success or result.transaction:
         return redirect(url_for('show_checkout',transaction_id=result.transaction.id))
-    elif result.transaction:
-        flash('Transaction status - %s' % result.transaction.status)
-        return redirect(url_for('show_checkout', transaction_id=result.transaction.id))
     else:
         for x in result.errors.deep_errors: flash('Error: %s: %s' % (x.code, x.message))
         return redirect(url_for('new_checkout'))

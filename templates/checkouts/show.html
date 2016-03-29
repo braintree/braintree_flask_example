@@ -1,121 +1,156 @@
 {% extends 'layout.html' %}
 {% block content %}
-<h1>Transaction {{ transaction.id }}</h1>
-<h2>Details</h2>
-<p>
-  <table>
-    <tr>
-      <th>Property</th>
-      <th>Value</th>
-    </tr>
-    <tr>
-      <td>id</td>
-      <td>{{ transaction.id }}</td>
-    </tr>
-    <tr>
-      <td>type</td>
-      <td>{{ transaction.type }}</td>
-    </tr>
-    <tr>
-      <td>amount</td>
-      <td>{{ transaction.amount }}</td>
-    </tr>
-    <tr>
-      <td>status</td>
-      <td>{{ transaction.status }}</td>
-    </tr>
-    <tr>
-      <td>created_at</td>
-      <td>{{ transaction.created_at }}</td>
-    </tr>
-    <tr>
-      <td>updated_at</td>
-      <td>{{ transaction.updated_at }}</td>
-    </tr>
-  </table>
-</p>
 
-<h2>Credit Card Details</h2>
-<p>
-  <table>
-    <tr>
-      <th>Property</th>
-      <th>Value</th>
-    </tr>
-    <tr>
-      <td>token</td>
-      <td>{{ transaction.credit_card_details.token }}</td>
-    </tr>
-    <tr>
-      <td>bin</td>
-      <td>{{ transaction.credit_card_details.bin }}</td>
-    </tr>
-    <tr>
-      <td>last_4</td>
-      <td>{{ transaction.credit_card_details.last_4 }}</td>
-    </tr>
-    <tr>
-      <td>card_type</td>
-      <td>{{ transaction.credit_card_details.card_type }}</td>
-    </tr>
-    <tr>
-      <td>expiration_date</td>
-      <td>{{ transaction.credit_card_details.expiration_date }}</td>
-    </tr>
-    <tr>
-      <td>cardholder_name</td>
-      <td>{{ transaction.credit_card_details.cardholder_name }}</td>
-    </tr>
-    <tr>
-      <td>customer_location</td>
-      <td>{{ transaction.credit_card_details.customer_location }}</td>
-    </tr>
-  </table>
-</p>
+<div class="wrapper">
+  <div class="response container">
+    <div class="content">
+      <div class="icon">
+        <img src="/static/images/{{ result['icon'] }}.svg" alt="">
+      </div>
 
-<h2>Customer Details</h2>
-<p>
-  <table>
-    <tr>
-      <th>Property</th>
-      <th>Value</th>
-    </tr>
-    <tr>
-      <td>id</td>
-      <td>{{ transaction.customer_details.id }}</td>
-    </tr>
-    <tr>
-      <td>first_name</td>
-      <td>{{ transaction.customer_details.first_name }}</td>
-    </tr>
-    <tr>
-      <td>last_name</td>
-      <td>{{ transaction.customer_details.last_name }}</td>
-    </tr>
-    <tr>
-      <td>email</td>
-      <td>{{ transaction.customer_details.email }}</td>
-    </tr>
-    <tr>
-      <td>company</td>
-      <td>{{ transaction.customer_details.company }}</td>
-    </tr>
-    <tr>
-      <td>website</td>
-      <td>{{ transaction.customer_details.website }}</td>
-    </tr>
-    <tr>
-      <td>phone</td>
-      <td>{{ transaction.customer_details.phone }}</td>
-    </tr>
-    <tr>
-      <td>fax</td>
-      <td>{{ transaction.customer_details.fax }}</td>
-    </tr>
-  </table>
-</p>
+      <h1>{{ result['header'] }}</h1>
+      <section>
+        <p>{{ result['message'] }}</p>
+      </section>
 
-<p>
-  <a href="{{ url_for('new_checkout') }}">Return to checkout page</a>
-</p>
+      <section>
+        <a class="button primary back" href="/checkouts/new">
+          <span>Test Another Transaction</span>
+        </a>
+      </section>
+    </div>
+  </div>
+</div>
+
+<aside class="drawer dark">
+  <header>
+    <div class="content compact">
+      <a href="https://developers.braintreepayments.com" class="braintree" target="_blank">Braintree</a>
+      <h3>API Response</h3>
+    </div>
+  </header>
+
+  <article class="content compact">
+  <section>
+    <h5>Transaction</h5>
+      <table cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td>{{ transaction.id }}</td>
+          </tr>
+          <tr>
+            <td>type</td>
+            <td>{{ transaction.type }}</td>
+          </tr>
+          <tr>
+            <td>amount</td>
+            <td>{{ transaction.amount }}</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>{{ transaction.status }}</td>
+          </tr>
+          <tr>
+            <td>created_at</td>
+            <td>{{ transaction.created_at }}</td>
+          </tr>
+          <tr>
+            <td>updated_at</td>
+            <td>{{ transaction.updated_at }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h5>Payment</h5>
+
+      <table cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr>
+            <td>token</td>
+            <td>{{ transaction.credit_card_details.token }}</td>
+          </tr>
+          <tr>
+            <td>bin</td>
+            <td>{{ transaction.credit_card_details.bin }}</td>
+          </tr>
+          <tr>
+            <td>last_4</td>
+            <td>{{ transaction.credit_card_details.last_4 }}</td>
+          </tr>
+          <tr>
+            <td>card_type</td>
+            <td>{{ transaction.credit_card_details.card_type }}</td>
+          </tr>
+          <tr>
+            <td>expiration_date</td>
+            <td>{{ transaction.credit_card_details.expiration_date }}</td>
+          </tr>
+          <tr>
+            <td>cardholder_name</td>
+            <td>{{ transaction.credit_card_details.cardholder_name }}</td>
+          </tr>
+          <tr>
+            <td>customer_location</td>
+            <td>{{ transaction.credit_card_details.customer_location }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    {% if transaction.customer_details.id %}
+      <section>
+        <h5>Customer Details</h5>
+        <table cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td>id</td>
+              <td>{{ transaction.customer_details.id }}</td>
+            </tr>
+            <tr>
+              <td>first_name</td>
+              <td>{{ transaction.customer_details.first_name }}</td>
+            </tr>
+            <tr>
+              <td>last_name</td>
+              <td>{{ transaction.customer_details.last_name }}</td>
+            </tr>
+            <tr>
+              <td>email</td>
+              <td>{{ transaction.customer_details.email }}</td>
+            </tr>
+            <tr>
+              <td>company</td>
+              <td>{{ transaction.customer_details.company }}</td>
+            </tr>
+            <tr>
+              <td>website</td>
+              <td>{{ transaction.customer_details.website }}</td>
+            </tr>
+            <tr>
+              <td>phone</td>
+              <td>{{ transaction.customer_details.phone }}</td>
+            </tr>
+            <tr>
+              <td>fax</td>
+              <td>{{ transaction.customer_details.fax }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    {% endif %}
+
+    <section>
+      <p class="center small">Integrate with the Braintree SDK for a secure and seamless checkout</p>
+    </section>
+
+    <section>
+      <a class="button secondary full" href="https://developers.braintreepayments.com/guides/drop-in" target="_blank">
+        <span>See the Docs</span>
+      </a>
+    </section>
+  </article>
+</aside>
 {% endblock %}

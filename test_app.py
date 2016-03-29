@@ -8,7 +8,7 @@ import app
 import tempfile
 
 @mock.patch('braintree.ClientToken.generate', staticmethod(lambda: 'test_client_token'))
-@mock.patch('braintree.Transaction.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION))
+@mock.patch('braintree.Transaction.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SUCCESSFUL))
 class AppTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -30,16 +30,16 @@ class AppTestCase(unittest.TestCase):
 
     def test_checkout_contains_checkout_form(self):
         res = self.app.get('/checkouts/new')
-        self.assertIn('<form id="checkout"', res.data)
+        self.assertIn('<form id="payment-form"', res.data)
 
-    def test_checkout_contains_payment_form_div(self):
+    def test_checkout_contains_dropin_div(self):
         res = self.app.get('/checkouts/new')
-        self.assertIn('<div id="payment-form"', res.data)
+        self.assertIn('<div id="bt-dropin"', res.data)
 
     def test_checkout_includes_amount_input(self):
         res = self.app.get('/checkouts/new')
         self.assertIn('<label for="amount"', res.data)
-        self.assertIn('<input type="text" name="amount" id="amount"', res.data)
+        self.assertIn('<input id="amount" name="amount" type="tel"', res.data)
 
     def test_checkouts_show_route_available(self):
         res = self.app.get('/checkouts/1')
@@ -54,6 +54,15 @@ class AppTestCase(unittest.TestCase):
         self.assertIn('Billson', res.data)
         self.assertIn('Billy Bobby Pins', res.data)
 
+    def test_checkouts_show_displays_success_message_when_transaction_succeeded(self):
+        res = self.app.get('/checkouts/1')
+        self.assertIn('Sweet Success!', res.data)
+
+    def test_checkouts_show_displays_failure_message_when_transaction_failed(self):
+        with mock.patch('braintree.Transaction.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_FAILURE)):
+            res = self.app.get('/checkouts/1')
+            self.assertIn('Transaction Failed', res.data)
+
     @mock.patch('braintree.Transaction.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_SUCCESSFUL))
     def test_checkouts_create_redirects_to_checkouts_show(self):
         res = self.app.post('/checkouts', data={
@@ -62,6 +71,16 @@ class AppTestCase(unittest.TestCase):
         })
         self.assertEquals(res.status_code, 302)
         self.assertIn('/checkouts/my_id', res.location)
+
+    @mock.patch('braintree.Transaction.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_SUCCESSFUL))
+    def test_hides_customer_details_if_none(self):
+        with mock.patch('braintree.Transaction.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_NO_CUSTOMER)):
+            res = self.app.post('/checkouts', follow_redirects=True, data={
+                'payment_method_nonce': 'some_nonce',
+                'amount': '12.34',
+            })
+
+            self.assertNotIn('Customer Details', res.data)
 
     @mock.patch('braintree.Transaction.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_UNSUCCESSFUL))
     def test_checkouts_create_redirects_to_checkouts_new_when_transaction_unsuccessful(self):
@@ -91,11 +110,12 @@ class AppTestCase(unittest.TestCase):
 
     @mock.patch('braintree.Transaction.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_UNSUCCESSFUL_PROCESSOR))
     def test_checkouts_create_displays_errors_when_processor_errors_present(self):
-        res = self.app.post('/checkouts', follow_redirects=True, data={
-            'payment_method_nonce': 'some_invalid_nonce',
-            'amount': '12.34',
-        })
-        self.assertIn('Transaction status - authorized', res.data)
+        with mock.patch('braintree.Transaction.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_FAILURE)):
+            res = self.app.post('/checkouts', follow_redirects=True, data={
+                'payment_method_nonce': 'some_invalid_nonce',
+                'amount': '2000',
+            })
+            self.assertIn('Your test transaction has a status of processor_declined.', res.data)
 
 if __name__ == '__main__':
     unittest.main()
