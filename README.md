@@ -3,17 +3,21 @@ An example Braintree integration for python in the Flask framework.
 
 ## Setup Instructions
 
-1. Install requirements
-  `pip install -r requirements.txt`
+1. Install requirements:
+  ```sh
+  pip install -r requirements.txt
+  ```
 
-2. Copy the `application.cfg.sample` file to `application.cfg`, and fill in your Braintree API credentials. Credentials can be found by navigating to Account > My user > View API Keys in the Braintree control panel. Full instructions can be [found on our support site](https://articles.braintreepayments.com/control-panel/important-gateway-credentials#api-credentials).
+2. Copy the `application.cfg.sample` file to `application.cfg`, and fill in your Braintree API credentials. Credentials can be found by navigating to Account > My User > View Authorizations in the Braintree Control Panel. Full instructions can be [found on our support site](https://articles.braintreepayments.com/control-panel/important-gateway-credentials#api-credentials).
 
-3. Start server
-  `python app.py`
+3. Start server:
+  ```sh
+  python app.py
+  ```
 
 ## Running tests
 
-Unit tests do not make api calls to Braintree and do not require Braintree credentials. You can run this project's unit tests by calling `python test_app.py` on the command line.
+Unit tests do not make API calls to Braintree and do not require Braintree credentials. You can run this project's unit tests by calling `python test_app.py` on the command line.
 
 ## Pro Tips
 
