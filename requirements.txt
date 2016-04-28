@@ -9,3 +9,4 @@ requests<3.0,>=0.11.1
 pbr>=0.11
 six>=1.7
 python-dotenv==0.4.0
+gunicorn==19.4.5
