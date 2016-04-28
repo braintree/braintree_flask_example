@@ -1,16 +1,20 @@
 from flask import Flask, redirect, url_for, render_template, request, flash
 
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
 import braintree
 
 app = Flask(__name__)
-app.config.from_pyfile('application.cfg')
-app.secret_key = app.config['APP_SECRET_KEY']
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+app.secret_key = os.environ.get('APP_SECRET_KEY')
 
 braintree.Configuration.configure(
-    app.config['BT_ENVIRONMENT'],
-    app.config['BT_MERCHANT_ID'],
-    app.config['BT_PUBLIC_KEY'],
-    app.config['BT_PRIVATE_KEY']
+    os.environ.get('BT_ENVIRONMENT'),
+    os.environ.get('BT_MERCHANT_ID'),
+    os.environ.get('BT_PUBLIC_KEY'),
+    os.environ.get('BT_PRIVATE_KEY')
 )
 
 TRANSACTION_SUCCESS_STATUSES = [
