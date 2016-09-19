@@ -53,6 +53,7 @@ class AppTestCase(unittest.TestCase):
         self.assertIn(b'ijkl', res.data)
         self.assertIn(b'Billson', res.data)
         self.assertIn(b'Billy Bobby Pins', res.data)
+        self.assertIn(b'submitted_for_settlement', res.data)
 
     def test_checkouts_show_displays_success_message_when_transaction_succeeded(self):
         res = self.app.get('/checkouts/1')
