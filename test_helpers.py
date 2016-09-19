@@ -7,7 +7,7 @@ class MockObjects:
         id = 'my_id',
         type = 'sale',
         amount = '10.00',
-        status = 'authorized',
+        status = 'submitted_for_settlement',
         created_at = '03/01/1994',
         updated_at = '03/01/1994',
         credit_card_details = mock.Mock(

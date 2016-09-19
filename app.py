@@ -60,6 +60,9 @@ def create_checkout():
     result = braintree.Transaction.sale({
         'amount': request.form['amount'],
         'payment_method_nonce': request.form['payment_method_nonce'],
+        'options': {
+            "submit_for_settlement": True
+        }
     })
 
     if result.is_success or result.transaction:
