@@ -27,6 +27,10 @@ You can deploy this app directly to Heroku to see the app live. Skip the setup i
 
 Unit tests do not make API calls to Braintree and do not require Braintree credentials. You can run this project's unit tests by calling `python test_app.py` on the command line.
 
+## Testing Transactions
+
+Sandbox transactions must be made with [sample credit card numbers](https://developers.braintreepayments.com/reference/general/testing/python#credit-card-numbers), and the response of a `Transaction.sale()` call is dependent on the [amount of the transaction](https://developers.braintreepayments.com/reference/general/testing/python#test-amounts).
+
 ## Pro Tips
 
 - The `application.cfg.example` contains an `APP_SECRET_KEY` setting. Even in development you should [generate your own custom secret key for your app](http://flask.pocoo.org/docs/0.10/quickstart/#sessions).
