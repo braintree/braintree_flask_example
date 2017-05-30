@@ -25,6 +25,7 @@
         </div>
       </section>
 
+      <input type="hidden" id="nonce" name="payment_method_nonce" />
       <button class="button" type="submit" id="submit-button"><span>Test Transaction</span></button>
     </form>
 
@@ -33,35 +34,34 @@
 
 <script src="https://js.braintreegateway.com/web/dropin/1.1.0/js/dropin.min.js"></script>
 <script>
-  var button = document.querySelector('#submit-button');
+  var form = document.querySelector('#payment-form');
+  var client_token = '{{ client_token }}';
 
   braintree.dropin.create({
-    authorization: '{{ client_token }}',
+    authorization: client_token,
     selector: '#bt-dropin',
     paypal: {
       flow: 'vault'
     }
   }, function (createErr, instance) {
-    button.addEventListener('click', function (e) {
-      e.preventDefault();
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
       instance.requestPaymentMethod(function (err, payload) {
         if (err) {
-          alert('Error', err);
+          console.log('Error', err);
           return;
         }
-        // Submit payload.nonce to your server
-        var input = document.createElement('input');
-        input.setAttribute('type', 'hidden');
-        input.setAttribute('name', 'payment_method_nonce');
-        input.setAttribute('value', payload.nonce);
-        document.getElementById('payment-form').appendChild(input);
-        document.getElementById('payment-form').submit();
+
+        // Add the nonce to the form and submit
+        document.querySelector('#nonce').value = payload.nonce;
+        form.submit();
       });
     });
   });
 
   var checkout = new Demo({
     formID: 'payment-form'
-  })
+  });
 </script>
 {% endblock %}
