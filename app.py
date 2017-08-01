@@ -10,6 +10,8 @@ dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 app.secret_key = os.environ.get('APP_SECRET_KEY')
 
+PORT = int(os.environ.get('PORT', 4567))
+
 braintree.Configuration.configure(
     os.environ.get('BT_ENVIRONMENT'),
     os.environ.get('BT_MERCHANT_ID'),
@@ -72,4 +74,4 @@ def create_checkout():
         return redirect(url_for('new_checkout'))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4567, debug=True)
+    app.run(host='0.0.0.0', port=PORT, debug=True)
