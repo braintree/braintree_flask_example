@@ -2,8 +2,7 @@ version: '2'
 services:
   web:
     build: .
-    command: python app.py
     ports:
       - "4567:4567"
     volumes:
-      - .:/braintree_flask_example
+      - .:/var/www/braintree_flask_example
