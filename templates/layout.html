@@ -4,9 +4,6 @@
   <title>BraintreeFlaskExample</title>
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/app.css') }}">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/overrides.css') }}">
-  <script src="{{ url_for('static', filename='javascript/vendor/jquery-2.1.4.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='javascript/vendor/jquery.lettering-0.6.1.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='javascript/demo.js') }}"></script>
 </head>
 <body>
   <header class="main">
@@ -37,5 +34,6 @@
 
 
   {% block content %}{% endblock %}
+  <script src="{{ url_for('static', filename='javascript/demo.js') }}"></script>
 </body>
 </html>
