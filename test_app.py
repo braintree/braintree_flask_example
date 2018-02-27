@@ -7,8 +7,8 @@ import os
 import app
 import tempfile
 
-@mock.patch('braintree.ClientToken.generate', staticmethod(lambda: 'test_client_token'))
-@mock.patch('braintree.Transaction.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SUCCESSFUL))
+@mock.patch('braintree.client_token_gateway.ClientTokenGateway.generate', staticmethod(lambda: 'test_client_token'))
+@mock.patch('braintree.TransactionGateway.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SUCCESSFUL))
 class AppTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -60,11 +60,11 @@ class AppTestCase(unittest.TestCase):
         self.assertIn(b'Sweet Success!', res.data)
 
     def test_checkouts_show_displays_failure_message_when_transaction_failed(self):
-        with mock.patch('braintree.Transaction.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_FAILURE)):
+        with mock.patch('braintree.TransactionGateway.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_FAILURE)):
             res = self.app.get('/checkouts/1')
             self.assertIn(b'Transaction Failed', res.data)
 
-    @mock.patch('braintree.Transaction.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_SUCCESSFUL))
+    @mock.patch('braintree.TransactionGateway.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_SUCCESSFUL))
     def test_checkouts_create_redirects_to_checkouts_show(self):
         res = self.app.post('/checkouts', data={
             'payment_method_nonce': 'some_nonce',
@@ -73,9 +73,9 @@ class AppTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 302)
         self.assertIn('/checkouts/my_id', res.location)
 
-    @mock.patch('braintree.Transaction.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_SUCCESSFUL))
+    @mock.patch('braintree.TransactionGateway.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_SUCCESSFUL))
     def test_hides_customer_details_if_none(self):
-        with mock.patch('braintree.Transaction.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_NO_CUSTOMER)):
+        with mock.patch('braintree.TransactionGateway.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_NO_CUSTOMER)):
             res = self.app.post('/checkouts', follow_redirects=True, data={
                 'payment_method_nonce': 'some_nonce',
                 'amount': '12.34',
@@ -83,7 +83,7 @@ class AppTestCase(unittest.TestCase):
 
             self.assertNotIn(b'Customer Details', res.data)
 
-    @mock.patch('braintree.Transaction.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_UNSUCCESSFUL))
+    @mock.patch('braintree.TransactionGateway.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_UNSUCCESSFUL))
     def test_checkouts_create_redirects_to_checkouts_new_when_transaction_unsuccessful(self):
         res = self.app.post('/checkouts', data={
             'payment_method_nonce': 'some_invalid_nonce',
@@ -92,7 +92,7 @@ class AppTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 302)
         self.assertIn('/checkouts/new', res.location)
 
-    @mock.patch('braintree.Transaction.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_UNSUCCESSFUL))
+    @mock.patch('braintree.TransactionGateway.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_UNSUCCESSFUL))
     def test_checkouts_create_displays_errors_when_transaction_unsuccessful(self):
         res = self.app.post('/checkouts', follow_redirects=True, data={
             'payment_method_nonce': 'some_invalid_nonce',
@@ -101,7 +101,7 @@ class AppTestCase(unittest.TestCase):
         self.assertIn(b'Error: 12345: Transaction was unsuccessful', res.data)
         self.assertIn(b'Error: 67890: Transaction was really unsuccessful', res.data)
 
-    @mock.patch('braintree.Transaction.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_UNSUCCESSFUL_PROCESSOR))
+    @mock.patch('braintree.TransactionGateway.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_UNSUCCESSFUL_PROCESSOR))
     def test_checkouts_create_redirects_to_checkouts_new_when_processor_errors_present(self):
         res = self.app.post('/checkouts', data={
             'payment_method_nonce': 'some_invalid_nonce',
@@ -109,9 +109,9 @@ class AppTestCase(unittest.TestCase):
         })
         self.assertIn('/checkouts/my_id', res.location)
 
-    @mock.patch('braintree.Transaction.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_UNSUCCESSFUL_PROCESSOR))
+    @mock.patch('braintree.TransactionGateway.sale', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_SALE_UNSUCCESSFUL_PROCESSOR))
     def test_checkouts_create_displays_errors_when_processor_errors_present(self):
-        with mock.patch('braintree.Transaction.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_FAILURE)):
+        with mock.patch('braintree.TransactionGateway.find', staticmethod(lambda x: test_helpers.MockObjects.TRANSACTION_FAILURE)):
             res = self.app.post('/checkouts', follow_redirects=True, data={
                 'payment_method_nonce': 'some_invalid_nonce',
                 'amount': '2000',

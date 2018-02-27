@@ -4,6 +4,7 @@ import os
 from os.path import join, dirname
 from dotenv import load_dotenv
 import braintree
+from gateway import generate_client_token, transact, find_transaction
 
 app = Flask(__name__)
 dotenv_path = join(dirname(__file__), '.env')
@@ -11,13 +12,6 @@ load_dotenv(dotenv_path)
 app.secret_key = os.environ.get('APP_SECRET_KEY')
 
 PORT = int(os.environ.get('PORT', 4567))
-
-braintree.Configuration.configure(
-    os.environ.get('BT_ENVIRONMENT'),
-    os.environ.get('BT_MERCHANT_ID'),
-    os.environ.get('BT_PUBLIC_KEY'),
-    os.environ.get('BT_PRIVATE_KEY')
-)
 
 TRANSACTION_SUCCESS_STATUSES = [
     braintree.Transaction.Status.Authorized,
@@ -35,12 +29,12 @@ def index():
 
 @app.route('/checkouts/new', methods=['GET'])
 def new_checkout():
-    client_token = braintree.ClientToken.generate()
+    client_token = generate_client_token()
     return render_template('checkouts/new.html', client_token=client_token)
 
 @app.route('/checkouts/<transaction_id>', methods=['GET'])
 def show_checkout(transaction_id):
-    transaction = braintree.Transaction.find(transaction_id)
+    transaction = find_transaction(transaction_id)
     result = {}
     if transaction.status in TRANSACTION_SUCCESS_STATUSES:
         result = {
@@ -59,7 +53,7 @@ def show_checkout(transaction_id):
 
 @app.route('/checkouts', methods=['POST'])
 def create_checkout():
-    result = braintree.Transaction.sale({
+    result = transact({
         'amount': request.form['amount'],
         'payment_method_nonce': request.form['payment_method_nonce'],
         'options': {
