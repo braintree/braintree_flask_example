@@ -6,9 +6,9 @@ from dotenv import load_dotenv
 import braintree
 from gateway import generate_client_token, transact, find_transaction
 
+load_dotenv()
+
 app = Flask(__name__)
-dotenv_path = join(dirname(__file__), '.env')
-load_dotenv(dotenv_path)
 app.secret_key = os.environ.get('APP_SECRET_KEY')
 
 PORT = int(os.environ.get('PORT', 4567))
