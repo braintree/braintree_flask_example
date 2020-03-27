@@ -7,14 +7,14 @@ An example Braintree integration for python in the Flask framework.
 
 1. Install requirements:
   ```sh
-  pip3 install -r requirements.txt
+  pip install -r requirements.txt
   ```
 
 2. Copy the contents of `example.env` into a new file named `.env` and fill in your Braintree API credentials. Credentials can be found by navigating to Account > My User > View Authorizations in the Braintree Control Panel. Full instructions can be [found on our support site](https://articles.braintreepayments.com/control-panel/important-gateway-credentials#api-credentials).
 
 3. Start server:
   ```sh
-  python3 app.py
+  python app.py
   ```
 
   By default, this runs the app on port `4567`. You can configure the port by setting the environmental variable `PORT`.
