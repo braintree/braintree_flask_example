@@ -35,7 +35,7 @@ Sandbox transactions must be made with [sample credit card numbers](https://deve
 
 ## Pro Tips
 
-- The `application.cfg.example` contains an `APP_SECRET_KEY` setting. Even in development you should [generate your own custom secret key for your app](https://flask.palletsprojects.com/en/1.0.x/quickstart/#sessions).
+- The `example.env` contains an `APP_SECRET_KEY` setting. Even in development you should [generate your own custom secret key for your app](https://flask.palletsprojects.com/en/1.0.x/quickstart/#sessions).
 
 ## Help
 
