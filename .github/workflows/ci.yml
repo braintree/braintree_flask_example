@@ -1,0 +1,33 @@
+name: Python
+
+on:
+  [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+
+    runs-on: ubuntu-20.04 # latest version doesn't have python 3.5
+    strategy:
+      matrix:
+        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11']
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+    - name: Setup Test Env
+      run: |
+        pip install -r requirements.txt
+        touch .env
+        echo BT_ENVIRONMENT='${{ secrets.BT_ENVIRONMENT }}' >> .env
+        echo BT_MERCHANT_ID='${{ secrets.BT_MERCHANT_ID }}' >> .env
+        echo BT_PUBLIC_KEY='${{ secrets.BT_PUBLIC_KEY }}' >> .env
+        echo BT_PRIVATE_KEY='${{ secrets.BT_PRIVATE_KEY }}' >> .env
+    - name: Run tests
+      run: python test_app.py
