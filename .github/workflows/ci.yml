@@ -26,13 +26,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
       - name: Setup Test Env
-        run: |
-          pip install -r requirements.txt
-          touch .env
-          echo BT_ENVIRONMENT='${{ secrets.BT_ENVIRONMENT }}' >> .env
-          echo BT_MERCHANT_ID='${{ secrets.BT_MERCHANT_ID }}' >> .env
-          echo BT_PUBLIC_KEY='${{ secrets.BT_PUBLIC_KEY }}' >> .env
-          echo BT_PRIVATE_KEY='${{ secrets.BT_PRIVATE_KEY }}' >> .env
-          echo APP_SECRET_KEY='${{ secrets.APP_SECRET_KEY }}' >> .env
+        run: pip install -r requirements.txt
       - name: Run tests
+          env:
+            BT_ENVIRONMENT: ${{ secrets.BT_ENVIRONMENT }}
+            BT_MERCHANT_ID: ${{ secrets.BT_MERCHANT_ID }}
+            BT_PUBLIC_KEY: ${{ secrets.BT_PUBLIC_KEY }}
+            BT_PRIVATE_KEY: ${{ secrets.BT_PRIVATE_KEY }}
+            APP_SECRET_KEY: ${{ secrets.APP_SECRET_KEY }}
         run: python test_app.py
