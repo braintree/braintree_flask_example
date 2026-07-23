@@ -2,6 +2,8 @@ import os
 from dotenv import load_dotenv
 import braintree
 
+load_dotenv()
+
 gateway = braintree.BraintreeGateway(
     braintree.Configuration(
         environment=os.environ.get('BT_ENVIRONMENT'),

@@ -30,16 +30,12 @@ class AppTestCase(unittest.TestCase):
 
     def test_checkout_contains_checkout_form(self):
         res = self.app.get('/checkouts/new')
-        self.assertIn(b'<form id="payment-form"', res.data)
-
-    def test_checkout_contains_dropin_div(self):
-        res = self.app.get('/checkouts/new')
-        self.assertIn(b'<div id="bt-dropin"', res.data)
+        self.assertIn(b'<form id="hosted-fields-wrapper"', res.data)
 
     def test_checkout_includes_amount_input(self):
         res = self.app.get('/checkouts/new')
         self.assertIn(b'<label for="amount"', res.data)
-        self.assertIn(b'<input id="amount" name="amount" type="tel"', res.data)
+        self.assertIn(b'<input id="amount" name="amount" class="hosted-field" type="tel"', res.data)
 
     def test_checkouts_show_route_available(self):
         res = self.app.get('/checkouts/1')
