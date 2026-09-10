@@ -1,7 +1,9 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -281,57 +283,88 @@ aside.drawer article:after {
 }
 
 @font-face {
-  font-family: 'Open Sans light';
+  font-family: "Open Sans light";
   src: url("../fonts/open-sans/OpenSans-Light-webfont.eot");
-  src: url("../fonts/open-sans/OpenSans-Light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/open-sans/OpenSans-Light-webfont.woff") format("woff"), url("../fonts/open-sans/OpenSans-Light-webfont.ttf") format("truetype"), url("../fonts/open-sans/OpenSans-Light-webfont.svg#open_sansbold") format("svg");
+  src:
+    url("../fonts/open-sans/OpenSans-Light-webfont.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/open-sans/OpenSans-Light-webfont.woff") format("woff"),
+    url("../fonts/open-sans/OpenSans-Light-webfont.ttf") format("truetype"),
+    url("../fonts/open-sans/OpenSans-Light-webfont.svg#open_sansbold") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Open Sans regular';
+  font-family: "Open Sans regular";
   src: url("../fonts/open-sans/OpenSans-Regular-webfont.eot");
-  src: url("../fonts/open-sans/OpenSans-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/open-sans/OpenSans-Regular-webfont.woff") format("woff"), url("../fonts/open-sans/OpenSans-Regular-webfont.ttf") format("truetype"), url("../fonts/open-sans/OpenSans-Regular-webfont.svg#open_sansregular") format("svg");
+  src:
+    url("../fonts/open-sans/OpenSans-Regular-webfont.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/open-sans/OpenSans-Regular-webfont.woff") format("woff"),
+    url("../fonts/open-sans/OpenSans-Regular-webfont.ttf") format("truetype"),
+    url("../fonts/open-sans/OpenSans-Regular-webfont.svg#open_sansregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Open Sans semibold';
+  font-family: "Open Sans semibold";
   src: url("../fonts/open-sans/OpenSans-Semibold-webfont.eot");
-  src: url("../fonts/open-sans/OpenSans-Semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/open-sans/OpenSans-Semibold-webfont.woff") format("woff"), url("../fonts/open-sans/OpenSans-Semibold-webfont.ttf") format("truetype"), url("../fonts/open-sans/OpenSans-Semibold-webfont.svg#open_sanssemibold") format("svg");
+  src:
+    url("../fonts/open-sans/OpenSans-Semibold-webfont.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/open-sans/OpenSans-Semibold-webfont.woff") format("woff"),
+    url("../fonts/open-sans/OpenSans-Semibold-webfont.ttf") format("truetype"),
+    url("../fonts/open-sans/OpenSans-Semibold-webfont.svg#open_sanssemibold") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Open Sans bold';
+  font-family: "Open Sans bold";
   src: url("../fonts/open-sans/OpenSans-Bold-webfont.eot");
-  src: url("../fonts/open-sans/OpenSans-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/open-sans/OpenSans-Bold-webfont.woff") format("woff"), url("../fonts/open-sans/OpenSans-Bold-webfont.ttf") format("truetype"), url("../fonts/open-sans/OpenSans-Bold-webfont.svg#open_sansbold") format("svg");
+  src:
+    url("../fonts/open-sans/OpenSans-Bold-webfont.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/open-sans/OpenSans-Bold-webfont.woff") format("woff"),
+    url("../fonts/open-sans/OpenSans-Bold-webfont.ttf") format("truetype"),
+    url("../fonts/open-sans/OpenSans-Bold-webfont.svg#open_sansbold") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'BT Mono';
+  font-family: "BT Mono";
   src: url("../fonts/bt-mono/bt-mono-Regular.eot");
-  src: url("../fonts/bt-mono/bt-mono-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bt-mono/bt-mono-Regular.woff2") format("woff2"), url("../fonts/bt-mono/bt-mono-Regular.woff") format("woff"), url("../fonts/bt-mono/bt-mono-Regular.ttf") format("truetype"), url("../fonts/bt-mono/bt-mono-Regular.svg#bt_monoregular") format("svg");
+  src:
+    url("../fonts/bt-mono/bt-mono-Regular.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/bt-mono/bt-mono-Regular.woff2") format("woff2"),
+    url("../fonts/bt-mono/bt-mono-Regular.woff") format("woff"),
+    url("../fonts/bt-mono/bt-mono-Regular.ttf") format("truetype"),
+    url("../fonts/bt-mono/bt-mono-Regular.svg#bt_monoregular") format("svg");
   font-style: normal;
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'BT Mono medium';
+  font-family: "BT Mono medium";
   src: url("../fonts/bt-mono/bt-mono-Medium.eot");
-  src: url("../fonts/bt-mono/bt-mono-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/bt-mono/bt-mono-Medium.woff2") format("woff2"), url("../fonts/bt-mono/bt-mono-Medium.woff") format("woff"), url("../fonts/bt-mono/bt-mono-Medium.ttf") format("truetype"), url("../fonts/bt-mono/bt-mono-Medium.svg#bt_monobold") format("svg");
+  src:
+    url("../fonts/bt-mono/bt-mono-Medium.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/bt-mono/bt-mono-Medium.woff2") format("woff2"),
+    url("../fonts/bt-mono/bt-mono-Medium.woff") format("woff"),
+    url("../fonts/bt-mono/bt-mono-Medium.ttf") format("truetype"),
+    url("../fonts/bt-mono/bt-mono-Medium.svg#bt_monobold") format("svg");
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'BT Mono bold';
+  font-family: "BT Mono bold";
   src: url("../fonts/bt-mono/bt-mono-Bold.eot");
-  src: url("../fonts/bt-mono/bt-mono-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/bt-mono/bt-mono-Bold.woff2") format("woff2"), url("../fonts/bt-mono/bt-mono-Bold.woff") format("woff"), url("../fonts/bt-mono/bt-mono-Bold.ttf") format("truetype"), url("../fonts/bt-mono/bt-mono-Bold.svg#bt_monobold") format("svg");
+  src:
+    url("../fonts/bt-mono/bt-mono-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/bt-mono/bt-mono-Bold.woff2") format("woff2"),
+    url("../fonts/bt-mono/bt-mono-Bold.woff") format("woff"),
+    url("../fonts/bt-mono/bt-mono-Bold.ttf") format("truetype"),
+    url("../fonts/bt-mono/bt-mono-Bold.svg#bt_monobold") format("svg");
   font-weight: 700;
   font-style: normal;
 }
@@ -1276,7 +1309,7 @@ body {
   font-size: 16px;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
-  letter-spacing: .008em;
+  letter-spacing: 0.008em;
   text-rendering: optimizeLegibility;
   line-height: 25px;
 }
@@ -1352,11 +1385,26 @@ strong {
 }
 
 a {
-  -webkit-transition: color 0.2s ease, border-color, 0.2s ease;
-  -moz-transition: color 0.2s ease, border-color, 0.2s ease;
-  -ms-transition: color 0.2s ease, border-color, 0.2s ease;
-  -o-transition: color 0.2s ease, border-color, 0.2s ease;
-  transition: color 0.2s ease, border-color, 0.2s ease;
+  -webkit-transition:
+    color 0.2s ease,
+    border-color,
+    0.2s ease;
+  -moz-transition:
+    color 0.2s ease,
+    border-color,
+    0.2s ease;
+  -ms-transition:
+    color 0.2s ease,
+    border-color,
+    0.2s ease;
+  -o-transition:
+    color 0.2s ease,
+    border-color,
+    0.2s ease;
+  transition:
+    color 0.2s ease,
+    border-color,
+    0.2s ease;
   color: #393536;
   text-decoration: none;
 }
@@ -1364,21 +1412,21 @@ a {
 a:hover,
 a:focus,
 a:active {
-  color: #5CD493;
-  border-color: #5CD493;
+  color: #5cd493;
+  border-color: #5cd493;
 }
 
 p a,
 li a {
   font-family: "BT Mono medium", "Helvetica Neue", Helvetica, Sans-serif;
-  border-bottom: solid 1px #DEE2E5;
-  padding: .2em .1em;
-  margin: 0 -.1em;
+  border-bottom: solid 1px #dee2e5;
+  padding: 0.2em 0.1em;
+  margin: 0 -0.1em;
 }
 
 p a:hover,
 li a:hover {
-  border-color: #5CD493;
+  border-color: #5cd493;
 }
 
 img {
@@ -1463,7 +1511,7 @@ header.main {
   width: 100%;
   z-index: 20;
   background-color: #fff;
-  border-bottom: solid 1px #DEE2E5;
+  border-bottom: solid 1px #dee2e5;
 }
 
 @media (min-width: 1025px) {
@@ -1710,12 +1758,32 @@ section:last-child {
 }
 
 .button {
-  -webkit-transition: background-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), border-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  -moz-transition: background-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), border-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  -ms-transition: background-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), border-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  -o-transition: background-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), border-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  transition: background-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), border-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  background-color: #5CD493;
+  -webkit-transition:
+    background-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    border-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    opacity 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -moz-transition:
+    background-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    border-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    opacity 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -ms-transition:
+    background-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    border-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    opacity 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -o-transition:
+    background-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    border-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    opacity 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition:
+    background-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    border-color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    color 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    opacity 140ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  background-color: #5cd493;
   border: none;
   border-radius: 2px;
   display: inline-block;
@@ -1771,8 +1839,10 @@ section:last-child {
 }
 
 .button span:after {
-  -webkit-animation: spin 400ms infinite normal cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards 0s paused;
-  -moz-animation: spin 400ms infinite normal cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards 0s paused;
+  -webkit-animation: spin 400ms infinite normal cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards 0s
+    paused;
+  -moz-animation: spin 400ms infinite normal cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards 0s
+    paused;
   animation: spin 400ms infinite normal cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards 0s paused;
   -webkit-transition: opacity 200ms ease;
   -moz-transition: opacity 200ms ease;
@@ -1813,14 +1883,14 @@ section:last-child {
 
 .button.secondary {
   background-color: transparent;
-  border: solid 1px #5CD493;
-  color: #5CD493;
+  border: solid 1px #5cd493;
+  color: #5cd493;
   font-size: 16px;
 }
 
 .button.secondary:hover {
   color: #fff;
-  background-color: #5CD493;
+  background-color: #5cd493;
 }
 
 .button.cap {
@@ -1829,22 +1899,22 @@ section:last-child {
 }
 
 ::-webkit-input-placeholder {
-  color: #6E787F;
+  color: #6e787f;
   line-height: 1;
 }
 
 :-moz-placeholder {
-  color: #6E787F;
+  color: #6e787f;
   line-height: 1;
 }
 
 ::-moz-placeholder {
-  color: #6E787F;
+  color: #6e787f;
   line-height: 1;
 }
 
 :-ms-input-placeholder {
-  color: #6E787F;
+  color: #6e787f;
   line-height: 1;
 }
 
@@ -1865,14 +1935,24 @@ input:focus:-ms-input-placeholder {
 }
 
 label[for="amount"] {
-  -webkit-transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95), color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  -moz-transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95), color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  -ms-transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95), color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  -o-transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95), color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95), color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  border-top: solid 1px #DEE2E5;
-  border-bottom: solid 1px #DEE2E5;
-  color: #6E787F;
+  -webkit-transition:
+    background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -moz-transition:
+    background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -ms-transition:
+    background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -o-transition:
+    background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition:
+    background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  border-top: solid 1px #dee2e5;
+  border-bottom: solid 1px #dee2e5;
+  color: #6e787f;
   cursor: pointer;
   display: block;
   font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -1882,7 +1962,9 @@ label[for="amount"] {
   margin-top: -11px;
   width: 100%;
   z-index: 1;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
@@ -1939,11 +2021,21 @@ input {
 }
 
 .amount-wrapper input {
-  -webkit-transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), color 0.2s ease;
-  -moz-transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), color 0.2s ease;
-  -ms-transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), color 0.2s ease;
-  -o-transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), color 0.2s ease;
-  transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), color 0.2s ease;
+  -webkit-transition:
+    transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+    color 0.2s ease;
+  -moz-transition:
+    transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+    color 0.2s ease;
+  -ms-transition:
+    transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+    color 0.2s ease;
+  -o-transition:
+    transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+    color 0.2s ease;
+  transition:
+    transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+    color 0.2s ease;
   padding: 0 14px;
 }
 
@@ -2042,7 +2134,7 @@ header a,
   color: #393536;
   font-size: 12px;
   font-family: "BT Mono bold", "Helvetica Neue", Helvetica, Sans-serif;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 header.main .braintree {
@@ -2122,7 +2214,7 @@ header.main .braintree {
 }
 
 .notice.error {
-  background-color: #FF6161;
+  background-color: #ff6161;
   color: #fff;
 }
 
@@ -2139,11 +2231,11 @@ table {
 }
 
 tr {
-  border-top: solid 1px #DEE2E5;
+  border-top: solid 1px #dee2e5;
 }
 
 tr:last-child {
-  border-bottom: solid 1px #DEE2E5;
+  border-bottom: solid 1px #dee2e5;
 }
 
 th,
@@ -2158,8 +2250,8 @@ td {
   hyphens: auto;
   line-height: 1.3em;
   font-size: 14px;
-  letter-spacing: .02em;
-  padding: .6em 0;
+  letter-spacing: 0.02em;
+  padding: 0.6em 0;
   vertical-align: top;
   text-align: left;
 }
@@ -2174,7 +2266,7 @@ td {
   color: #393536;
   font-family: "BT Mono medium", "Helvetica Neue", Helvetica, Sans-serif;
   width: 60%;
-  padding: .6em 0 .6em .6em;
+  padding: 0.6em 0 0.6em 0.6em;
 }
 
 .checkout {
@@ -2184,7 +2276,6 @@ td {
 .checkout section {
   margin: 0;
   padding: 0;
-  
 }
 
 @media (min-width: 641px) {
@@ -2240,30 +2331,6 @@ td {
   -webkit-animation-duration: 700ms;
   -moz-animation-duration: 700ms;
   animation-duration: 700ms;
-}
-
-.bt-drop-in-wrapper {
-  min-height: 200px;
-  position: relative;
-  z-index: 1;
-}
-
-.bt-drop-in-placeholder {
-  background-color: #f9f9f9;
-  height: 187px;
-  width: 100%;
-  text-align: center;
-  color: #707073;
-  border: dashed 1px #DEE2E5;
-  border-bottom: none;
-  display: table;
-}
-
-.bt-drop-in-placeholder:before {
-  content: "(Drop-in)";
-  color: #707073;
-  display: table-cell;
-  vertical-align: middle;
 }
 
 .response {
@@ -2427,7 +2494,7 @@ aside.drawer article {
 
 aside.drawer header {
   position: relative;
-  border-bottom: solid 1px #4B4A4E;
+  border-bottom: solid 1px #4b4a4e;
   text-align: center;
   z-index: 20;
 }
@@ -2485,12 +2552,12 @@ aside.drawer h5 {
   color: #fff;
   line-height: 1.3em;
   font-size: 16px;
-  letter-spacing: .02em;
-  margin: 0 0 .9em;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.9em;
 }
 
 aside.drawer tr {
-  border-color: #4B4A4E;
+  border-color: #4b4a4e;
 }
 
 aside.drawer th,
@@ -2499,7 +2566,7 @@ aside.drawer td {
 }
 
 aside.drawer th {
-  color: #BABABD;
+  color: #bababd;
   width: 45%;
 }
 
@@ -2518,4 +2585,30 @@ aside.drawer ::selection {
   background: rgba(255, 255, 255, 0.99);
   color: rgba(62, 60, 65, 0.99);
   text-shadow: none;
+}
+
+/* Hosted Fields */
+.hosted-fields-wrapper {
+  margin-top: 20px;
+}
+
+.hosted-fields-wrapper label {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.hosted-field {
+  height: 40px;
+  padding: 8px 12px;
+  border: solid 1px #dee2e5;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.hosted-field.braintree-hosted-fields-focused {
+  border-color: #393536;
+}
+
+.hosted-field.braintree-hosted-fields-invalid {
+  border-color: #d0021b;
 }
